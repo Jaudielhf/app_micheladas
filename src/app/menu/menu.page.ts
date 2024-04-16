@@ -13,7 +13,7 @@ export class MenuPage implements OnInit {
   carrito: any = []; // Nuevo: arreglo para almacenar los productos en el carrito
 
   constructor(private router: Router, private http: HttpClient) {
-    this.ip = "192.168.1.95";
+    this.ip = "192.168.20.73";
   }
 
   ngOnInit() {

@@ -1,0 +1,42 @@
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+.productos-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.productos-table th,
+.productos-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.icon-button {
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+  --padding-start: 6px;
+  --padding-end: 6px;
+}
+
+/* Estilo específico para los botones de eliminar */
+.delete-button {
+  color: red;
+}
+
+/* Estilo específico para los botones de editar */
+.edit-button {
+  color: green;
+}
+
+/* Estilos para la celda de acción que contiene los botones */
+.action-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}

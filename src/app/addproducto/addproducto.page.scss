@@ -1,0 +1,23 @@
+.main-content {
+    position: relative;
+    z-index: 1;
+  }
+  .custom-table {
+    width: 100%;;
+    margin-bottom: 20px;
+  }
+  
+  .custom-table td, .custom-table th {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .custom-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .button-container {
+    text-align: center;
+    padding-top: 20px;
+  }
+  

@@ -11,7 +11,7 @@ export class LoginPage implements OnInit {
 
   email: string = '';
   password: string = '';
-  ip: string = "192.168.1.95";
+  ip: string = "192.168.20.73";
   
   constructor(private http: HttpClient, private router: Router) { }
 
