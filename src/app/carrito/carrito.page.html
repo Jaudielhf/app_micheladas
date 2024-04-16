@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Carrito de Compras</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="vaciarCarrito()">
+        <ion-icon name="trash-outline"></ion-icon> Vaciar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" >
+  <!-- Contenido del carrito -->
+  <div id="main-content" class="scrollable-content">
+    <ion-list *ngIf="carrito.length > 0; else emptyCarrito">
+      <ion-item *ngFor="let producto of carrito">
+        
+        <ion-label>
+          <h2>{{ producto.nombre }}</h2>
+          <p>{{ producto.descripcion }}</p>
+          <ion-badge color="primary" slot="end">{{ producto.precio }}</ion-badge>
+        </ion-label>
+        <ion-button slot="end" (click)="eliminarDelCarrito(producto)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item-divider></ion-item-divider>
+      <ion-item>
+        <ion-label>Precio Total:</ion-label>
+        <ion-badge slot="end">{{ calcularPrecioTotal() }}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cantidad de Productos:</ion-label>
+        <ion-badge slot="end">{{ carrito.length }}</ion-badge>
+      </ion-item>
+    </ion-list>
+
+    <!-- Mensaje si el carrito está vacío -->
+    <ng-template #emptyCarrito>
+      <ion-text color="medium" class="ion-text-center">
+        <p>No hay productos en el carrito.</p>
+      </ion-text>
+    </ng-template>
+
+    <!-- Botón para proceder al pago -->
+    <ion-button expand="block" (click)="procederAlPago()" *ngIf="carrito.length > 0">
+      Proceder al Pago
+    </ion-button>
+  </div>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="menu">
+        <ion-icon name="restaurant-outline"></ion-icon>
+        <ion-label>Menú</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="ofertas">
+        <ion-icon name="pricetag-outline"></ion-icon>
+        <ion-label>Ofertas</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="pedidos">
+        <ion-icon name="basket-outline"></ion-icon>
+        <ion-label>Pedidos</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

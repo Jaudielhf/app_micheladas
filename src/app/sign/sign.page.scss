@@ -1,0 +1,64 @@
+.header {
+    background-color: #F44336; /* Rojo oscuro */
+  }
+  
+  .toolbar {
+    color: white;
+  }
+  
+  .title {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .content {
+    padding: 0;
+  }
+  
+  .background {
+    position: relative;
+    height: 300px; /* Altura de la imagen de fondo */
+    overflow: hidden;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .col {
+    margin-bottom: 20px;
+  }
+  
+  .input {
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+    border-radius: 10px;
+  }
+  
+  .button {
+    border-radius: 10px;
+  }
+  
+  .button-row {
+    margin-top: 20px;
+  }
+  
+  .login-row {
+    margin-top: 10px;
+  }
+  
+  .login-link {
+    color: #FFC107; /* Color amarillo */
+    font-weight: bold;
+  }
+  

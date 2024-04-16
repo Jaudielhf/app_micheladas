@@ -1,0 +1,40 @@
+.custom-menu {
+  --ion-background-color: #222; /* Color de fondo del menú */
+  color: #fff; /* Color de texto del menú */
+}
+
+.menu-title {
+  color: #fff; /* Color del título del menú */
+}
+
+.menu-content {
+  background-color: #222; /* Color de fondo del contenido del menú */
+}
+
+.menu-item {
+  color: #fff; /* Color del texto de los elementos del menú */
+}
+
+.header {
+  --background: #ff6f61; /* Color de fondo del encabezado */
+  color: #fff; /* Color del texto del encabezado */
+}
+
+.main-content {
+  background-color: #fff; /* Color de fondo del contenido principal */
+}
+
+.welcome-text {
+  text-align: center; /* Alineación del texto al centro */
+}
+
+.explore-button {
+  --background: #ff6f61; /* Color de fondo del botón */
+  --color: #fff; /* Color del texto del botón */
+  margin-top: 20px; /* Espaciado superior del botón */
+}
+
+  .main-content{
+    position: relative;
+    z-index: 1;
+  }

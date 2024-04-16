@@ -1,0 +1,9 @@
+#main-content {
+    position: relative;
+    z-index: 1;
+  }
+  .scrollable-content {
+    overflow-y: auto;
+    height: calc(100vh - 200px); // Ajusta la altura según sea necesario
+  }
+  

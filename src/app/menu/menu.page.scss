@@ -1,0 +1,18 @@
+.main-content {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  ion-item {
+    --inner-padding-start: 20px;
+  }
+  
+  ion-badge {
+    --background: var(--ion-color-success);
+  }
+  .custom-fab {
+    margin-bottom: 80px; /* Ajusta este valor según sea necesario */
+  }
+  
