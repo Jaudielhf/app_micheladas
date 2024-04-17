@@ -10,13 +10,15 @@ import { AlertController } from '@ionic/angular';
 })
 export class CarritoPage implements OnInit {
   carrito: any = [];
-
+  ip: string='';
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private alertController: AlertController,
     private router: Router,
-  ) {}
+  ) {
+    this.ip='barsinson.site'
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -72,7 +74,7 @@ export class CarritoPage implements OnInit {
       productos: productosVenta,
       total: totalVenta
     };
-    const urlServicio = 'https://barsinson-site.preview-domain.com/Servicios/venta_carrito.php';
+    const urlServicio = 'https://'+this.ip+'/Servicios/usuarios/venta_carrito.php';
     this.http.post(urlServicio, datosVenta).subscribe(
       respuesta => {
         console.log('Respuesta del servidor:', respuesta);

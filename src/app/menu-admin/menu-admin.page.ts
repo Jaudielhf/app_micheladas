@@ -16,15 +16,16 @@ export class MenuAdminPage implements OnInit {
   txtnm: string = '';
   txtca: string = '';
   txtgr: number = 0;
-
-  constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {}
-
+  ip: string = '';
+  constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {
+    this.ip='barsinson.site'
+  }
   ngOnInit() {
     this.listaproductos();
   }
 
   listaproductos() {
-    this.http.get<any[]>('https://barsinson-site.preview-domain.com/Servicios/listaarticulos.php').subscribe(
+    this.http.get<any[]>('https://'+this.ip+'/Servicios/listaarticulos.php').subscribe(
       (res) => {
         console.log(res);
         this.productos = res;
@@ -35,7 +36,7 @@ export class MenuAdminPage implements OnInit {
     );
   }
 
-  async EliminarProducto(mat: string) {
+  async EliminarProducto(id: string) {
     const confirmAlert = await this.alertController.create({
       message: '¿Estás seguro de eliminar este producto?',
       buttons: [
@@ -50,7 +51,7 @@ export class MenuAdminPage implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.http.get('https://barsinson-site.preview-domain.com/Servicios/delarticulo.php?id_producto=' + mat).subscribe(
+            this.http.get('https://'+this.ip+'/Servicios/delarticulo.php?id_producto=' + id).subscribe(
               (res) => {
                 console.log(res);
                 this.listaproductos();
@@ -80,7 +81,7 @@ export class MenuAdminPage implements OnInit {
   }
 
   EditarProducto(id: string) {
-    this.http.get('https://barsinson-site.preview-domain.com/Servicios/busarticulo.php?id_producto=' + id).subscribe(
+    this.http.get('https://'+this.ip+'/Servicios/busarticulo.php?id_producto=' + id).subscribe(
       (res: any) => {
         console.log(res);
         this.navCtrl.navigateForward(['/addproducto'], {

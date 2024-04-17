@@ -1,7 +1,8 @@
-
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -9,39 +10,45 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  email: string = '';
-  password: string = '';
-
-  constructor(private http: HttpClient, private router: Router) {}
-
+  email : string ='';
+  password : string='';
+  ip: string = ' ';
+  constructor(private http: HttpClient, private router: Router) {
+    this.ip='barsinson.site'
+  }
   ValidarDato() {
-    const url = 'https://barsinson-site.preview-domain.com/Servicios/usuarios/validar_datos.php';
+    const url = 'https://'+this.ip+'/Servicios/usuarios/validar_datos.php';
     const data = {
       email: this.email,
       password: this.password
     };
     
-    this.http.post<any>(url, data).subscribe(
+    this.http.post<any>(url, data).pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = 'Error desconocido';
+        if (error.error instanceof ErrorEvent) {
+          errorMessage = `Error: ${error.error.message}`;
+        } else {
+          errorMessage = `Código de error ${error.status}, cuerpo del error: ${error.error}`;
+        }
+        console.error(errorMessage);
+        return throwError(errorMessage);
+      })
+    ).subscribe(
       (res) => {
         console.log(res);
-        console.log(data.email);
         const rol = res.rol;
         if (rol === 'administrador') {
-            
-            console.log('El usuario es un administrador.');
-           
-            this.router.navigateByUrl('/productos');
-        } else if( rol === 'usuario') {
-            console.log('El usuario no es un administrador.');
-            this.router.navigateByUrl('/dashboard-usuario');
+          console.log('El usuario es un administrador.');
+          this.router.navigateByUrl('/productos');
+        } else if (rol === 'usuario') {
+          console.log('El usuario no es un administrador.');
+          this.router.navigateByUrl('/dashboard-usuario');
         }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-   }
-    
+      }
+    );
+  }
+  
   sign() {
     this.router.navigateByUrl('/sign');
   }

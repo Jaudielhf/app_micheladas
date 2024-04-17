@@ -15,13 +15,15 @@ export class AddproductoPage implements OnInit {
   txtca: string = '';
   txtgr: number = 0;
   nuevo: boolean = true;
-
+  ip: string = '';
   constructor(
     private router: Router,
     private http: HttpClient,
     private alertController: AlertController,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.ip='barsinson.site'
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
@@ -37,7 +39,7 @@ export class AddproductoPage implements OnInit {
 
   saveProducto() {
     const producto = new Producto(this.txtma, this.txtnm, this.txtca, this.txtgr);
-    this.http.post(`https://barsinson-site.preview-domain.com/Servicios/addarticulo.php`, producto).subscribe(
+    this.http.post('https://'+this.ip+'/Servicios/addarticulo.php', producto).subscribe(
       (res) => {
         console.log(res);
         this.presentAlert('Producto agregado correctamente');
@@ -52,7 +54,7 @@ export class AddproductoPage implements OnInit {
 
   upProducto() {
     const producto = new Producto(this.txtma, this.txtnm, this.txtca, this.txtgr);
-    this.http.post(`https://barsinson-site.preview-domain.com/Servicios/moarticulo.php`, producto).subscribe(
+    this.http.post('https://'+this.ip+'/Servicios/moarticulo.php', producto).subscribe(
       (res) => {
         console.log(res);
         this.presentAlert('Producto actualizado correctamente');
