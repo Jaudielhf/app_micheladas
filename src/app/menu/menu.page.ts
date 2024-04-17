@@ -13,7 +13,7 @@ export class MenuPage implements OnInit {
   carrito: any = []; // Nuevo: arreglo para almacenar los productos en el carrito
 
   constructor(private router: Router, private http: HttpClient) {
-    this.ip = "192.168.20.73";
+    this.ip = "192.168.1.172";
   }
 
   ngOnInit() {
@@ -23,6 +23,10 @@ export class MenuPage implements OnInit {
   ionViewWillEnter() {
     // Vaciar el carrito al entrar en la página del menú
     this.carrito = [];
+  }
+
+  home(){
+      this.router.navigateByUrl('/dashboard-usuario');
   }
 
   listaproductos() {

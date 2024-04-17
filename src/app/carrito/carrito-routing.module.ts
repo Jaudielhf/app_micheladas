@@ -8,10 +8,7 @@ const routes: Routes = [
     path: '',
     component: CarritoPage
   },
-  {
-    path: 'menu',
-    loadChildren: () => import('../menu/menu.module').then(m => m.MenuPageModule)
-  },
+ 
 ];
 
 @NgModule({

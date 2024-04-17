@@ -53,20 +53,12 @@
 
   <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="menu">
+      <ion-tab-button (click)="goToMenu();">
         <ion-icon name="restaurant-outline"></ion-icon>
         <ion-label>Menú</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="ofertas">
-        <ion-icon name="pricetag-outline"></ion-icon>
-        <ion-label>Ofertas</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="pedidos">
-        <ion-icon name="basket-outline"></ion-icon>
-        <ion-label>Pedidos</ion-label>
-      </ion-tab-button>
+      
     </ion-tab-bar>
   </ion-tabs>
 </ion-content>

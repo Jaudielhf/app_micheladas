@@ -16,7 +16,7 @@ export class MenuAdminPage implements OnInit {
   txtnm: string = '';
   txtca: string = '';
   txtgr: number = 0;
-  ip: string = '192.168.20.73';
+  ip: string = '192.168.1.172';
 
   constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {}
 
