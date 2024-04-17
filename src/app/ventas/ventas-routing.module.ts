@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'ventas',
     loadChildren: () => import('../ventas/ventas.module').then(m => m.VentasPageModule)
+  },
+  {
+    path: 'menuAdmin',
+    loadChildren: () => import('../menu-admin/menu-admin.module').then(m => m.MenuAdminPageModule)
   }
 ];
 

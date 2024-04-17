@@ -30,6 +30,8 @@
 
 <ion-content [fullscreen]="true" class="ion-padding" id="main-content">
   <div class="main-content">
+    <h1 *ngIf="nuevo">Agregar Producto</h1>
+    <h1 *ngIf="!nuevo">Actualizar Producto</h1>
     <table class="custom-table">
       <tr>
         <td>
@@ -86,6 +88,11 @@
         <ion-icon name="home-outline"></ion-icon>
         <ion-label>Inicio</ion-label>
       </ion-tab-button>
+      <ion-tab-button tab="ventas">
+        <ion-icon name="pricetag-outline"></ion-icon>
+        <ion-label>Ventas</ion-label>
+      </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
+  
 </ion-content>

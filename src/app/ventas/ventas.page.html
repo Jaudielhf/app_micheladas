@@ -18,7 +18,7 @@
     <ion-content>
       <ion-list lines="none">
         <ion-item (click)="goToAbout()">
-          <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+          <ion-icon name="add-circle-outline" slot="start"></ion-icon>
           <ion-label>Agregar Producto</ion-label>
         </ion-item>
         <ion-item (click)="Logout()">
@@ -33,8 +33,7 @@
     <table class="productos-table">
       <thead>
         <tr>
-          <th>ID Detalle</th>
-          <th>ID Venta</th>
+          <th>ID</th>
           <th>Producto</th>
           <th>Precio</th>
           <th>Cantidad</th>
@@ -44,7 +43,6 @@
       <tbody>
         <tr *ngFor="let venta of ventas">
           <td>{{ venta.id_detalle }}</td>
-          <td>{{ venta.id_venta }}</td>
           <td>{{ venta.producto }}</td>
           <td>{{ venta.precio_unitario }}</td>
           <td>{{ venta.cantidad }}</td>
@@ -60,12 +58,16 @@
 
   <ion-tabs>
     <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="menuAdmin">
+        <ion-icon name="restaurant-outline"></ion-icon>
+        <ion-label>Menú</ion-label>
+      </ion-tab-button>
       <ion-tab-button tab="productos">
         <ion-icon name="home-outline"></ion-icon>
         <ion-label>Inicio</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="agregar">
-        <ion-icon name="pricetag-outline"></ion-icon>
+        <ion-icon name="add-circle-outline"></ion-icon>
         <ion-label>Agregar Producto</ion-label>
       </ion-tab-button>
     </ion-tab-bar>

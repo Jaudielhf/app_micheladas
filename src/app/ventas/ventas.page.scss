@@ -1,43 +1,62 @@
-.main-content {
-    position: relative;
-    z-index: 1;
-  }
+/* Estilos para dispositivos móviles */
+@media (max-width: 1440px) {
   .productos-table {
     width: 100%;
-    margin-top: 20px;
     border-collapse: collapse;
+    overflow: auto; /* Permitir scroll si es necesario */
   }
-  
+
   .productos-table th,
   .productos-table td {
-    padding: 10px;
+    padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    font-size: 16px; /* Tamaño de fuente más grande para dispositivos móviles */
+    white-space: nowrap; /* Evitar que el texto se envuelva */
+    overflow: hidden; /* Ocultar el exceso de contenido */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) si el contenido es demasiado largo */
   }
-  
-  .icon-button {
-    font-size: 24px;
-    width: 32px;
-    height: 32px;
-    --padding-start: 6px;
-    --padding-end: 6px;
+
+  .productos-table th {
+    background-color: #f5f5f5; /* Color de fondo para las celdas de encabezado */
+    color: #333; /* Color del texto para las celdas de encabezado */
+    font-weight: bold;
   }
-  
-  /* Estilo específico para los botones de eliminar */
-  .delete-button {
-    color: red;
-  }
-  
-  /* Estilo específico para los botones de editar */
-  .edit-button {
-    color: green;
-  }
-  
-  /* Estilos para la celda de acción que contiene los botones */
+
   .action-cell {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
   }
-  
+
+  .action-cell ion-button {
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    --padding-start: 6px;
+    --padding-end: 6px;
+  }
+
+  .delete-button {
+    color: red;
+  }
+
+  .edit-button {
+    color: green;
+  }
+}
+
+/* Estilos generales */
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+.icon-button {
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+  --padding-start: 6px;
+  --padding-end: 6px;
+}

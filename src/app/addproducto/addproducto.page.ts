@@ -27,12 +27,11 @@ export class AddproductoPage implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       if (params['id']) {
-        // Si hay parámetros de consulta, significa que se está editando un producto existente
-        this.txtma = +params['id']; // Convierte a número
+        this.txtma = +params['id'];
         this.txtnm = params['nombre'] || '';
         this.txtca = params['descripcion'] || '';
-        this.txtgr = +params['precio']; // Convierte a número
-        this.nuevo = false; // Establece el modo de edición
+        this.txtgr = +params['precio'];
+        this.nuevo = false; 
       }
     });
   }

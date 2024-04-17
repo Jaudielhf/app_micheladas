@@ -1,0 +1,32 @@
+.main-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.feature-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;;
+}
+
+.feature-section ion-icon {
+  margin-bottom: 10px;
+  color: #3880ff;
+  margin-left: 35px
+}
+.feature-section p {
+  font-size: 16px;
+  text-align: center;
+}
+
+ion-tab-bar {
+  --ion-color-primary: #3880ff;
+  --ion-color-primary-contrast: #fff;
+}
