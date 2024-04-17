@@ -16,7 +16,6 @@ export class MenuAdminPage implements OnInit {
   txtnm: string = '';
   txtca: string = '';
   txtgr: number = 0;
-  ip: string = '192.168.1.192';
 
   constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {}
 
@@ -25,7 +24,7 @@ export class MenuAdminPage implements OnInit {
   }
 
   listaproductos() {
-    this.http.get<any[]>('http://' + this.ip + '/servicios/listaarticulos.php').subscribe(
+    this.http.get<any[]>('https://barsinson-site.preview-domain.com/Servicios/listaarticulos.php').subscribe(
       (res) => {
         console.log(res);
         this.productos = res;
@@ -51,7 +50,7 @@ export class MenuAdminPage implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.http.get('http://' + this.ip + '/servicios/delarticulo.php?id_producto=' + mat).subscribe(
+            this.http.get('https://barsinson-site.preview-domain.com/Servicios/delarticulo.php?id_producto=' + mat).subscribe(
               (res) => {
                 console.log(res);
                 this.listaproductos();
@@ -81,7 +80,7 @@ export class MenuAdminPage implements OnInit {
   }
 
   EditarProducto(id: string) {
-    this.http.get('http://' + this.ip + '/servicios/busarticulo.php?id_producto=' + id).subscribe(
+    this.http.get('https://barsinson-site.preview-domain.com/Servicios/busarticulo.php?id_producto=' + id).subscribe(
       (res: any) => {
         console.log(res);
         this.navCtrl.navigateForward(['/addproducto'], {

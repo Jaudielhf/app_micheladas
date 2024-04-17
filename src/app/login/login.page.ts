@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,18 +8,14 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
-
+export class LoginPage {
   email: string = '';
   password: string = '';
-  ip: string = "192.168.1.192";
-  
-  constructor(private http: HttpClient, private router: Router) { }
 
-  ngOnInit() {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ValidarDato() {
-    const url = `http://${this.ip}/servicios/usuarios/validar_datos.php`;
+    const url = 'https://barsinson-site.preview-domain.com/Servicios/usuarios/validar_datos.php';
     const data = {
       email: this.email,
       password: this.password
@@ -41,11 +38,11 @@ export class LoginPage implements OnInit {
       },
       (error) => {
         console.log(error);
-      }
-    );
-  }
-  
-  sign(){
+      }
+    );
+   }
+    
+  sign() {
     this.router.navigateByUrl('/sign');
   }
 }

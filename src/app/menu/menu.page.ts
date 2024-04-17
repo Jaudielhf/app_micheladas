@@ -13,7 +13,6 @@ export class MenuPage implements OnInit {
   carrito: any = [];
 
   constructor(private router: Router, private http: HttpClient) {
-    this.ip = "192.168.1.192";
   }
 
   ngOnInit() {
@@ -30,7 +29,7 @@ export class MenuPage implements OnInit {
 
   listaproductos() {
   console.log("Productos antes de cargar:", this.productos);
-  this.http.get("http://" + this.ip + "/servicios/listaarticulos.php").subscribe(
+  this.http.get("https://barsinson-site.preview-domain.com/Servicios/listaarticulos.php").subscribe(
     (res) => {
       console.log(res);
       this.productos = res;

@@ -14,7 +14,6 @@ export class AddproductoPage implements OnInit {
   txtnm: string = '';
   txtca: string = '';
   txtgr: number = 0;
-  ip: string = '192.168.1.192';
   nuevo: boolean = true;
 
   constructor(
@@ -38,7 +37,7 @@ export class AddproductoPage implements OnInit {
 
   saveProducto() {
     const producto = new Producto(this.txtma, this.txtnm, this.txtca, this.txtgr);
-    this.http.post(`http://${this.ip}/servicios/addarticulo.php`, producto).subscribe(
+    this.http.post(`https://barsinson-site.preview-domain.com/Servicios/addarticulo.php`, producto).subscribe(
       (res) => {
         console.log(res);
         this.presentAlert('Producto agregado correctamente');
@@ -53,7 +52,7 @@ export class AddproductoPage implements OnInit {
 
   upProducto() {
     const producto = new Producto(this.txtma, this.txtnm, this.txtca, this.txtgr);
-    this.http.post(`http://${this.ip}/servicios/moarticulo.php`, producto).subscribe(
+    this.http.post(`https://barsinson-site.preview-domain.com/Servicios/moarticulo.php`, producto).subscribe(
       (res) => {
         console.log(res);
         this.presentAlert('Producto actualizado correctamente');

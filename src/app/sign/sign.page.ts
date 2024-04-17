@@ -15,7 +15,6 @@ export class SignPage implements OnInit {
   apellido !:string;
   email !:string;
   password! :string;
-  ip: string = "192.168.1.172";
   constructor(private http: HttpClient, private router: Router) { }
   login(){
     this.router.navigateByUrl('/login');
@@ -24,7 +23,7 @@ export class SignPage implements OnInit {
   }
   AgregarUsuario(){
     let user = new Usuario(this.nombre, this.apellido, this.email, this.password);
-    this.http.post("http://"+this.ip+"/servicios/usuarios/adduser.php", user).subscribe(
+    this.http.post("https://barsinson-site.preview-domain.com/Servicios/usuarios/adduser.php", user).subscribe(
 
     (res) => {
       console.log(res);

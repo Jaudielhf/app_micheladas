@@ -10,7 +10,6 @@ import { AlertController } from '@ionic/angular';
 })
 export class VentasPage implements OnInit {
   ventas: any[] = [];
-  ip: string = '192.168.1.192';
 
   constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {}
 
@@ -19,7 +18,7 @@ export class VentasPage implements OnInit {
   }
 
   listaventas() {
-    this.http.get<any[]>('http://' + this.ip + '/servicios/listaventas.php').subscribe(
+    this.http.get<any[]>('https://barsinson-site.preview-domain.com/Servicios/listaventas.php').subscribe(
       (res) => {
         console.log(res);
         this.ventas = res;
@@ -30,7 +29,7 @@ export class VentasPage implements OnInit {
     );
   }
 
-  async EliminarProducto(mat: string) {
+  async EliminarVenta(mat: string) {
     const confirmAlert = await this.alertController.create({
       message: '¿Estás seguro de eliminar este producto?',
       buttons: [
@@ -45,7 +44,7 @@ export class VentasPage implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.http.get('http://' + this.ip + '/servicios/delventa.php?id_detalle=' + mat).subscribe(
+            this.http.get('https://barsinson-site.preview-domain.com/Servicios/delventa.php?id_detalle=' + mat).subscribe(
               (res) => {
                 console.log(res);
                 this.listaventas();

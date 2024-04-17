@@ -10,7 +10,6 @@ import { AlertController } from '@ionic/angular';
 })
 export class CarritoPage implements OnInit {
   carrito: any = [];
-  ip = "192.168.1.192";
 
   constructor(
     private http: HttpClient,
@@ -73,7 +72,7 @@ export class CarritoPage implements OnInit {
       productos: productosVenta,
       total: totalVenta
     };
-    const urlServicio = 'http://' + this.ip + '/servicios/venta_carrito.php';
+    const urlServicio = 'https://barsinson-site.preview-domain.com/Servicios/venta_carrito.php';
     this.http.post(urlServicio, datosVenta).subscribe(
       respuesta => {
         console.log('Respuesta del servidor:', respuesta);
