@@ -24,6 +24,10 @@ export class MenuPage implements OnInit {
     this.carrito = [];
   }
 
+  home(){
+      this.router.navigateByUrl('/dashboard-usuario');
+  }
+
   listaproductos() {
   console.log("Productos antes de cargar:", this.productos);
   this.http.get("http://" + this.ip + "/servicios/listaarticulos.php").subscribe(
