@@ -14,7 +14,7 @@ export class AddproductoPage implements OnInit {
   txtnm: string = '';
   txtca: string = '';
   txtgr: number = 0;
-  ip: string = '192.168.20.73';
+  ip: string = '192.168.1.192';
   nuevo: boolean = true;
 
   constructor(
@@ -82,11 +82,11 @@ export class AddproductoPage implements OnInit {
     this.txtnm = '';
     this.txtca = '';
     this.txtgr = 0;
-    this.nuevo = true; // Cambiar a modo de agregar nuevo producto después de guardar/actualizar
+    this.nuevo = true;
   }
 
   goToProfile() {
-    // Implementar lógica para navegar a la página de perfil si es necesario
+    this.router.navigateByUrl('/menu-admin');
   }
 
   logout() {

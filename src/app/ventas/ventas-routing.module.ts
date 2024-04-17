@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MenuAdminPage } from './menu-admin.page';
+import { VentasPage } from './ventas.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: MenuAdminPage
-  },
-  {
+    component: VentasPage
+  }
+  ,{
     path: 'productos',
     loadChildren: () => import('../productos/productos.module').then( m => m.ProductosPageModule)
-  },
-  {
-    path: 'menuAdmin',
-    loadChildren: () => import('../menu-admin/menu-admin.module').then(m => m.MenuAdminPageModule)
   },
   {
     path: 'agregar',
@@ -30,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MenuAdminPageRoutingModule {}
+export class VentasPageRoutingModule {}

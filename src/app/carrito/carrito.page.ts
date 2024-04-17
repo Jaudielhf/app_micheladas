@@ -10,7 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class CarritoPage implements OnInit {
   carrito: any = [];
-  ip = "192.168.1.95";
+  ip = "192.168.1.192";
 
   constructor(
     private http: HttpClient,

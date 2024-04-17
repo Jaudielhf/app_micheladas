@@ -3,32 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-
 @Component({
-  selector: 'app-menu-admin',
-  templateUrl: './menu-admin.page.html',
-  styleUrls: ['./menu-admin.page.scss'],
+  selector: 'app-ventas',
+  templateUrl: './ventas.page.html',
+  styleUrls: ['./ventas.page.scss'],
 })
-export class MenuAdminPage implements OnInit {
-  nuevo: boolean = false;
-  productos: any[] = [];
-  txtma: number = 0;
-  txtnm: string = '';
-  txtca: string = '';
-  txtgr: number = 0;
+export class VentasPage implements OnInit {
+  ventas: any[] = [];
   ip: string = '192.168.1.192';
 
   constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {}
 
   ngOnInit() {
-    this.listaproductos();
+    this.listaventas();
   }
 
-  listaproductos() {
-    this.http.get<any[]>('http://' + this.ip + '/servicios/listaarticulos.php').subscribe(
+  listaventas() {
+    this.http.get<any[]>('http://' + this.ip + '/servicios/listaventas.php').subscribe(
       (res) => {
         console.log(res);
-        this.productos = res;
+        this.ventas = res;
       },
       (error) => {
         console.log(error);
@@ -51,10 +45,10 @@ export class MenuAdminPage implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.http.get('http://' + this.ip + '/servicios/delarticulo.php?id_producto=' + mat).subscribe(
+            this.http.get('http://' + this.ip + '/servicios/delventa.php?id_detalle=' + mat).subscribe(
               (res) => {
                 console.log(res);
-                this.listaproductos();
+                this.listaventas();
                 this.presentAlert('Producto eliminado correctamente');
               },
               (error) => {
@@ -78,30 +72,6 @@ export class MenuAdminPage implements OnInit {
     });
   
     await alert.present();
-  }
-
-  EditarProducto(id: string) {
-    this.http.get('http://' + this.ip + '/servicios/busarticulo.php?id_producto=' + id).subscribe(
-      (res: any) => {
-        console.log(res);
-        this.navCtrl.navigateForward(['/addproducto'], {
-          queryParams: {
-            id: res[0].id_producto,
-            nombre: res[0].nombre,
-            descripcion: res[0].descripcion,
-            precio: res[0].precio
-          }
-        });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-  
-    
-  goToProfile() {
-
   }
 
   goToAbout(){

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Administrar Productos</ion-title>
+    <ion-title>Administrar Ventas</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -33,25 +33,24 @@
     <table class="productos-table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Descripción</th>
+          <th>ID Detalle</th>
+          <th>ID Venta</th>
+          <th>Producto</th>
           <th>Precio</th>
+          <th>Cantidad</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let producto of productos">
-          <td>{{ producto.id_producto }}</td>
-          <td>{{ producto.nombre }}</td>
-          <td>{{ producto.descripcion }}</td>
-          <td>{{ producto.precio }}</td>
+        <tr *ngFor="let venta of ventas">
+          <td>{{ venta.id_detalle }}</td>
+          <td>{{ venta.id_venta }}</td>
+          <td>{{ venta.producto }}</td>
+          <td>{{ venta.precio_unitario }}</td>
+          <td>{{ venta.cantidad }}</td>
           <td class="action-cell"> 
-            <ion-button (click)="EliminarProducto(producto.id_producto)" class="icon-button delete-button">
+            <ion-button (click)="EliminarProducto(venta.id_detalle)" class="icon-button delete-button">
               <ion-icon name="trash-outline"></ion-icon>
-            </ion-button>
-            <ion-button (click)="EditarProducto(producto.id_producto)" class="icon-button edit-button">
-              <ion-icon name="create-outline"></ion-icon>
             </ion-button>
           </td>
         </tr>
@@ -68,10 +67,6 @@
       <ion-tab-button tab="agregar">
         <ion-icon name="pricetag-outline"></ion-icon>
         <ion-label>Agregar Producto</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="ventas">
-        <ion-icon name="pricetag-outline"></ion-icon>
-        <ion-label>Ventas</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
