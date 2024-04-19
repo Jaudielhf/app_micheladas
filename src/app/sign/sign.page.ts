@@ -15,7 +15,10 @@ export class SignPage implements OnInit {
   apellido !:string;
   email !:string;
   password! :string;
-  constructor(private http: HttpClient, private router: Router) { }
+  ip!:string;
+  constructor(private http: HttpClient, private router: Router) {
+    this.ip='barsinson.site';
+   }
   login(){
     this.router.navigateByUrl('/login');
   }
@@ -23,14 +26,13 @@ export class SignPage implements OnInit {
   }
   AgregarUsuario(){
     let user = new Usuario(this.nombre, this.apellido, this.email, this.password);
-    this.http.post("https://barsinson-site.preview-domain.com/Servicios/usuarios/adduser.php", user).subscribe(
+    this.http.post('https://'+this.ip+'/Servicios/usuarios/adduser.php', user).subscribe(
 
     (res) => {
       console.log(res);
       if (res.hasOwnProperty('success') === true) {
         this.router.navigateByUrl('/login');
       } else {
-        // Manejar el caso en el que la inserción no fue exitosa
         console.error('La inserción no fue exitosa');
       }
     

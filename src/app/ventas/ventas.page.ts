@@ -8,19 +8,19 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './ventas.page.html',
   styleUrls: ['./ventas.page.scss'],
 })
-export class VentasPage implements OnInit {
-  ventas: any[] = [];
+export class VentasPage{
+  ventas: any;
   ip: string ='';
     constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {
-      this.ip='barsinson.site';
+      this.ip='201.116.64.233';
+      this.listaventas();
         }
 
-  ngOnInit() {
-    this.listaventas();
-  }
-
+        ngOnInit() {
+          this.listaventas();
+        }
   listaventas() {
-    this.http.get<any[]>('https://'+this.ip+'/Servicios/listaventas.php').subscribe(
+    this.http.get('http://'+this.ip+'/Servicios/listaventas.php').subscribe(
       (res) => {
         console.log(res);
         this.ventas = res;
@@ -46,7 +46,7 @@ export class VentasPage implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.http.get('https://'+this.ip+'/Servicios/delventa.php?id_detalle=' + mat).subscribe(
+            this.http.get('http://'+this.ip+'/Servicios/delventa.php?id_detalle=' + mat).subscribe(
               (res) => {
                 console.log(res);
                 this.listaventas();
