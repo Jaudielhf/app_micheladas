@@ -1,41 +1,54 @@
-#container {
+ion-content{
+  --background: linear-gradient(#4269A0, #DCD5D5) ;
+}
+.container{
+  margin-top: 40%;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-#container {
-  padding: 20px;
+  .Titulo{
+    color: #C49308;
+    font-size: 35px;
+    margin-bottom: -20px;
+  }
+  h2{
+    font-family: "Irish Grover";
+    
+  }
 }
 
 ion-card {
   margin: 20px;
 }
-
+.content-buton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 ion-button {
   margin-top: 20px;
+  position: relative;
+  --background: #C49308;
+  --border-radius: 70px;
+  width: 200px;
+  height: 60px;
+  font-family: "Irish Grover";
+  --color: #0E2038;
+  font-size: 25px;
 }
+
+ion-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: rgba(0, 0, 0, 0.5); /* Color de la sombra */
+  filter: blur(10px); /* Aplicar filtro de desenfoque para suavizar la sombra */
+  z-index: -1; /* Coloca la sombra detrás del botón */
+}
+
+
 .banner {
   margin-top: 20px;
   text-align: center;
@@ -43,6 +56,8 @@ ion-button {
 
 .bar-image {
   max-width: 100%;
+  width: 50%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 25px;
+  margin-top: 2%;
 }

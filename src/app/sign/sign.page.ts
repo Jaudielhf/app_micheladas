@@ -19,6 +19,7 @@ export class SignPage implements OnInit {
   constructor(private http: HttpClient, private router: Router) {
     this.ip='barsinson.site';
    }
+   
   login(){
     this.router.navigateByUrl('/login');
   }
@@ -39,8 +40,10 @@ export class SignPage implements OnInit {
   },
     (error)=>{
       console.log(error);
+
     }
     );
   }
+  
 
 }

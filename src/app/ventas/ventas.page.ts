@@ -10,9 +10,9 @@ import { AlertController } from '@ionic/angular';
 })
 export class VentasPage{
   ventas: any;
-  ip: string ='';
+  ip: string ='barsinson.site';
     constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {
-      this.ip='201.116.64.233';
+      this.ip='barsinson.site';
       this.listaventas();
         }
 
@@ -20,7 +20,7 @@ export class VentasPage{
           this.listaventas();
         }
   listaventas() {
-    this.http.get('http://'+this.ip+'/Servicios/listaventas.php').subscribe(
+    this.http.get('https://'+this.ip+'/Servicios/listaventas.php').subscribe(
       (res) => {
         console.log(res);
         this.ventas = res;

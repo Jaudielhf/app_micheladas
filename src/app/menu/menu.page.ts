@@ -13,7 +13,7 @@ export class MenuPage{
   carrito: any = [];
 
   constructor(private router: Router, private http: HttpClient) {
-    this.ip='201.116.64.233';
+    this.ip='barsinson.site';
     this.listaproductos();
   }
   home(){
@@ -21,7 +21,7 @@ export class MenuPage{
   }
 
   listaproductos() {
-    this.http.get('http://'+this.ip+'/Servicios/listaarticulos.php').subscribe(
+    this.http.get('https://'+this.ip+'/Servicios/listaarticulos.php').subscribe(
       (res) => {
         console.log(res);
         this.productos = res;

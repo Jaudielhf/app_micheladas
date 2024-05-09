@@ -1,16 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>
-      Bar Sinson
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" class="ion-padding" >
-  <div class="banner">
-    <img src="/assets/imagenes/bar_image.avif" alt="Bar Image" class="bar-image">
+<ion-content [fullscreen]="true" class="ion-padding">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Irish+Grover" />
+ 
+  <div class="container">
+    <h2 class="Titulo">"CerveFrio"</h2>
+    <h2>Dr.Wagner</h2>
   </div>
-  <ion-button expand="block" color="primary" (click)="goToLoginPage();">
-    Comenzar
-  </ion-button>
+
+  <div class="banner">
+    <img
+      src="/assets/imagenes/logo.jpg"	
+      alt="Bar Image"
+      class="bar-image"
+    />
+  </div>
+  <div class="content-buton">
+    <ion-button (click)="goToLoginPage();">
+      Comenzar
+    </ion-button>
+  </div>
+  
+     
+
 </ion-content>

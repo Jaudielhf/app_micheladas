@@ -1,79 +1,58 @@
-@media (max-width: 1440px) {
-  .ventas-table-wrapper {
-    overflow-x: auto;
-    width: 100%;
-  }
-
-  .ventas-table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-  }
-
-  .ventas-table th,
-  .ventas-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-right: 8px;
-  }
-
-  .ventas-table tbody {
-    display: block;
-    max-height: 300px;
-    overflow-y: auto;
-  }
-
-  .action-cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .action-cell ion-button {
-    font-size: 16px;
-    width: 32px;
-    height: 32px;
-    --padding-start: 6px;
-    --padding-end: 6px;
-  }
-
-  .delete-button {
-    color: red;
-  }
-
-  .edit-button {
-    color: green;
-  }
-}
-
 .main-content {
-  position: relative;
-  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-.ventas-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
+.card-bebidas {
+  width: calc(38.33% - 20px);
+  max-width: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.ventas-table th,
-.ventas-table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+.card-bebidas:hover {
+  transform: translateY(-5px);
 }
 
-.icon-button {
+.card-bebidas ion-button {
+  --border-radius: 50%;
+  --background: #fff;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --ion-color-icon: #555;
+  --ion-color-icon-hover: #333;
+  margin: 0 5px;
+}
+
+.delete-button {
+  --ion-color: red;
+}
+
+.edit-button {
+  --ion-color: orange;
+}
+
+.tab-bar {
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+}
+
+.tab-button {
+  --background-selected: transparent;
+  --color-selected: #555;
+  --color-selected-rgb: 85, 85, 85;
+}
+
+.tab-button ion-icon {
   font-size: 24px;
-  width: 32px;
-  height: 32px;
-  --padding-start: 6px;
-  --padding-end: 6px;
+}
+
+.tab-button ion-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
 }

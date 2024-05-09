@@ -14,10 +14,10 @@ export class LoginPage {
   password : string='';
   ip: string = ' ';
   constructor(private http: HttpClient, private router: Router) {
-    this.ip='201.116.64.233'
+    this.ip='barsinson.site';
   }
   ValidarDato() {
-    const url = 'http://'+this.ip+'/Servicios/usuarios/validar_datos.php';
+    const url = 'https://'+this.ip+'/Servicios/usuarios/validar_datos.php';
     const data = {
       email: this.email,
       password: this.password
