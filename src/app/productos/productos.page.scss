@@ -1,3 +1,37 @@
+ion-content {
+  --background: linear-gradient(#4269A0, #DCD5D5);
+}
+ion-toolbar{
+  --background: #4269A0;
+  
+}
+.container {
+  margin-top: 1%;
+  text-align: center;
+}
+
+.container .Titulo {
+  color: #C49308;
+  font-size: 15px;
+  margin-bottom: -20px;
+  margin-right: 40px;
+}
+ion-menu-button{
+  --color: #000000;
+}
+.title{
+  color: #0E2038;
+}
+h2, p{
+  font-family: "Irish Grover";
+}
+.container h2 {
+  font-family: "Irish Grover";
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-right: 40px;
+}
+
 .main-content {
   text-align: center;
   padding: 20px;
@@ -5,28 +39,72 @@
 
 .image-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 20px;
+
+  article{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 110px;
+    height: 141px;
+    border-radius: 30px;
+    background-color: #0E2038;
+    color: #000000;
+
+   p{
+    color: #DCD5D5;
+    margin-bottom: 0;
+   }
+   img{
+    margin-top: 10%;
+   }
+
+   .group-img {
+    position: relative;
+  }
+  
+  .group-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 5px;
+  }
+  }
 }
 
 .feature-section {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 20px;;
+  margin-top: 20px;
 }
 
 .feature-section ion-icon {
   margin-bottom: 10px;
   color: #3880ff;
-  margin-left: 35px
+  margin-left: 35px;
 }
+
 .feature-section p {
   font-size: 16px;
   text-align: center;
 }
-
-ion-tab-bar {
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-contrast: #fff;
+ion-grid{
+  .icono{
+    color: #000000;
+  }
+  p{
+    color: #000000;
+  }
+}
+ion-tab-bar{
+  --background: linear-gradient(90deg, #82ade9, #729cd6);
+  //--background: #4269A0;
+  ion-icon{
+    color: #000000;
+  }
+  ion-label{
+    color: #000000;
+  }
 }

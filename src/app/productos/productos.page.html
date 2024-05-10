@@ -1,79 +1,98 @@
-<ion-menu contentId="main-content" side="start" type="overlay">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Irish+Grover" />
+ 
+<ion-app>
+  <ion-menu contentId="main-content" side="start" type="overlay">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list lines="none">
+        <ion-item (click)="goToAbout()">
+          <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+          <ion-label>Agregar Producto</ion-label>
+        </ion-item>
+        <ion-item (click)="Logout()">
+          <ion-icon name="log-out-outline" slot="start"></ion-icon>
+          <ion-label>Cerrar Sesión</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
   <ion-header>
-    <ion-toolbar >
-      <ion-title>Menú</ion-title>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+      <div class="container">
+        <h2 class="Titulo">CerveFrio</h2>
+        <h2>Dr.Wagner</h2>
+      </div>
     </ion-toolbar>
   </ion-header>
-
-  <ion-content>
-    <ion-list lines="none">
-      <ion-item (click)="goToAbout()">
-        <ion-icon name="add-circle-outline" slot="start"></ion-icon>
-        <ion-label>Agregar Producto</ion-label>
-      </ion-item>
-      <ion-item (click)="Logout()">
-        <ion-icon name="log-out-outline" slot="start"></ion-icon>
-        <ion-label>Cerrar Sesion</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Bar Sinson</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" class="ion-padding" id="main-content">
-  <div class="main-content">
-    <h2>Bienvenido a Bar Sinson</h2>
-    <p>
-      Aquí podrás llevar a cabo la administración de tus productos y las ventas realizadas en tu bar.
-    </p>
-  </div>
-
-  <div class="image-container">
-    <img src="./assets/imagenes/bebida.avif" alt="Imagen de bebida">
-  </div>
-
-  <ion-grid class="feature-section">
-    <ion-row>
-      <ion-col size="4">
-        <ion-icon name="wine-outline" size="large"></ion-icon>
-        <p>Administra tus productos</p>
-      </ion-col>
-      <ion-col size="4">
-        <ion-icon name="cart-outline" size="large"></ion-icon>
-        <p>Administra ventas fácilmente</p>
-      </ion-col>
-      <ion-col size="4">
-        <ion-icon name="analytics-outline" size="large"></ion-icon>
-        <p>Consulta estadísticas</p>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="menuAdmin">
-        <ion-icon name="restaurant-outline"></ion-icon>
-        <ion-label>Menú</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="agregar">
-        <ion-icon name="add-circle-outline"></ion-icon>
-        <ion-label>Agregar Producto</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="ventas">
-        <ion-icon name="pricetag-outline"></ion-icon>
-        <ion-label>Ventas</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
-</ion-content>
-
   
- 
+    
+  <ion-content [fullscreen]="true" class="ion-padding" id="main-content">
+    <div class="main-content">
+      <h2 class="title">Bienvenido al CerveFrio DR.Wagner</h2>
+      <p>
+        Aquí podrás llevar a cabo la administración de tus productos y las ventas realizadas en tu bar.
+      </p>
+    </div>
+
+    <div class="image-container">
+      <article>
+        <p>Bebidas</p>
+        <img src="assets/imagenes/mojito-removebg-preview.png" alt="">
+      </article>
+      <article>
+        <p>Cervezas</p>
+        <img style="width: 80%;" src="assets/imagenes/caguama-removebg-preview.png" alt="">
+      </article>
+      <article>
+        <p>Productos</p>
+        <div class="group-img">
+          <img src="assets/imagenes/Frame_1-removebg-preview.png" alt="">
+        </div>
+      </article>
+    </div>
+
+    <ion-grid class="feature-section">
+      <ion-row>
+        <ion-col size="4">
+          <ion-icon class="icono" name="wine-outline" size="large"></ion-icon>
+          <p>Administra tus productos</p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon class="icono" name="cart-outline" size="large"></ion-icon>
+          <p>Administra ventas fácilmente</p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon class="icono" name="analytics-outline" size="large"></ion-icon>
+          <p>Consulta tus pedidos</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="menuAdmin">
+          <ion-icon name="restaurant-outline"></ion-icon>
+          <ion-label>Menú</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="agregar">
+          <ion-icon name="add-circle-outline"></ion-icon>
+          <ion-label>Agregar Producto</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="ventas">
+          <ion-icon name="pricetag-outline"></ion-icon>
+          <ion-label>Ventas</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-content>
+</ion-app>
