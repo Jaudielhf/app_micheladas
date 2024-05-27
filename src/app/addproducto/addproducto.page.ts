@@ -22,7 +22,7 @@ export class AddproductoPage implements OnInit {
     private alertController: AlertController,
     private route: ActivatedRoute
   ) {
-    this.ip='barsinson.site';
+    this.ip='192.168.2.55';
   }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class AddproductoPage implements OnInit {
 
   saveProducto() {
     const producto = new Producto(this.txtma, this.txtnm, this.txtca, this.txtgr);
-    this.http.post('https://'+this.ip+'/Servicios/addarticulo.php', producto).subscribe(
+    this.http.post('http://'+this.ip+'/Servicios/addarticulo.php', producto).subscribe(
       (res) => {
         console.log(res);
         this.presentAlert('Producto agregado correctamente');
@@ -55,7 +55,7 @@ export class AddproductoPage implements OnInit {
 
   upProducto() {
     const producto = new Producto(this.txtma, this.txtnm, this.txtca, this.txtgr);
-    this.http.post('https://'+this.ip+'/Servicios/moarticulo.php', producto).subscribe(
+    this.http.post('http://'+this.ip+'/Servicios/moarticulo.php', producto).subscribe(
       (res) => {
         console.log(res);
         this.presentAlert('Producto actualizado correctamente');

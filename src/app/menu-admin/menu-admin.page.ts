@@ -19,14 +19,14 @@ export class MenuAdminPage implements OnInit {
   txtgr: number = 0;
   ip:string;
   constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {
-    this.ip='barsinson.site';
+    this.ip='192.168.2.55';
   }
   ngOnInit() {
     this.listaproductos();
   }
 
   listaproductos() {
-    this.http.get('https://'+this.ip+'/Servicios/listaarticulos.php').subscribe(
+    this.http.get('http://'+this.ip+'/Servicios/listaarticulos.php').subscribe(
       (res) => {
         console.log(res);
         this.productos = res;
@@ -81,7 +81,7 @@ export class MenuAdminPage implements OnInit {
   }
 
   EditarProducto(id: string) {
-    this.http.get('https://'+this.ip+'/Servicios/busarticulo.php?id_producto=' + id).subscribe(
+    this.http.get('http://'+this.ip+'/Servicios/busarticulo.php?id_producto=' + id).subscribe(
       (res: any) => {
         console.log(res);
         this.navCtrl.navigateForward(['/addproducto'], {

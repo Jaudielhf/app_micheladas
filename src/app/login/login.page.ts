@@ -12,12 +12,12 @@ import { throwError } from 'rxjs';
 export class LoginPage {
   email : string ='';
   password : string='';
-  ip: string = ' ';
+  ip: string = '';
   constructor(private http: HttpClient, private router: Router) {
-    this.ip='barsinson.site';
+    this.ip='192.168.2.55';
   }
   ValidarDato() {
-    const url = 'https://'+this.ip+'/Servicios/usuarios/validar_datos.php';
+    const url = 'http://'+this.ip+'/Servicios/usuarios/validar_datos.php';
     const data = {
       email: this.email,
       password: this.password

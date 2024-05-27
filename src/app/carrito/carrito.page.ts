@@ -17,7 +17,7 @@ export class CarritoPage implements OnInit {
     private alertController: AlertController,
     private router: Router,
   ) {
-    this.ip='barsinson.site'
+    this.ip='192.168.2.55'
   }
 
   ngOnInit() {
@@ -74,7 +74,7 @@ export class CarritoPage implements OnInit {
       productos: productosVenta,
       total: totalVenta
     };
-    const urlServicio = 'https://'+this.ip+'/Servicios/usuarios/venta_carrito.php';
+    const urlServicio = 'http://'+this.ip+'/Servicios/usuarios/venta_carrito.php';
     this.http.post(urlServicio, datosVenta).subscribe(
       respuesta => {
         console.log('Respuesta del servidor:', respuesta);
