@@ -21,7 +21,7 @@ export class MenuPage{
   }
 
   listaproductos() {
-    this.http.get('https://'+this.ip+'/Servicios/listaarticulos.php').subscribe(
+    this.http.get('https://'+this.ip+'/servicios/listaarticulos.php').subscribe(
       (res) => {
         console.log(res);
         this.productos = res;

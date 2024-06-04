@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from './model/Usuario';
+import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
 
 
 
@@ -11,38 +13,32 @@ import { Usuario } from './model/Usuario';
   styleUrls: ['./sign.page.scss'],
 })
 export class SignPage implements OnInit {
-  nombre !:string;
-  apellido !:string;
-  email !:string;
-  password! :string;
-  ip!:string;
-  constructor(private http: HttpClient, private router: Router) {
-    this.ip='192.168.2.55';
-   }
+  nombre: string = '';
+  apellido: string = '';
+  email: string = '';
+  password: string = '';
+
+  constructor(private authService: AuthService, private navCtrl: NavController) {}
    
-  login(){
-    this.router.navigateByUrl('/login');
+  login() {
+    this.navCtrl.navigateForward('/login'); // Asegúrate de tener configurada la ruta a la página de login
   }
   ngOnInit() {
   }
-  AgregarUsuario(){
-    let user = new Usuario(this.nombre, this.apellido, this.email, this.password);
-    this.http.post('http://'+this.ip+'/Servicios/usuarios/adduser.php', user).subscribe(
-
-    (res) => {
-      console.log(res);
-      if (res.hasOwnProperty('success') === true) {
-        this.router.navigateByUrl('/login');
+  async AgregarUsuario() {
+    try {
+      await this.authService.signup(this.email, this.password, this.nombre, this.apellido);
+      // Navegar a la página principal
+      this.navCtrl.navigateForward('/home'); // Asegúrate de tener configurada la ruta a la página principal
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Error signing up:', error);
+        // Mostrar un mensaje de error
+        alert('Error al registrarse: ' + error.message);
       } else {
-        console.error('La inserción no fue exitosa');
+        console.error('Unexpected error', error);
       }
-    
-  },
-    (error)=>{
-      console.log(error);
-
     }
-    );
   }
   
 

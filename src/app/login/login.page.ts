@@ -1,8 +1,7 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/compat/auth'; // Importa AngularFireAuth
 
 @Component({
   selector: 'app-login',
@@ -10,49 +9,77 @@ import { throwError } from 'rxjs';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  email : string ='';
-  password : string='';
-  ip: string = '';
-  constructor(private http: HttpClient, private router: Router) {
-    this.ip='192.168.2.55';
-  }
-  ValidarDato() {
-    const url = 'http://'+this.ip+'/Servicios/usuarios/validar_datos.php';
-    const data = {
-      email: this.email,
-      password: this.password
-    };
-    
-    this.http.post<any>(url, data).pipe(
-      catchError((error: HttpErrorResponse) => {
-        let errorMessage = 'Error desconocido';
-        if (error.error instanceof ErrorEvent) {
-          errorMessage = `Error: ${error.error.message}`;
-        } else {
-          errorMessage = `Código de error ${error.status}, cuerpo del error: ${error.error}`;
+  email: string = '';
+  password: string = '';
+
+  constructor(
+    private authService: AuthService,
+    private navCtrl: NavController,
+    private afAuth: AngularFireAuth // Inyecta AngularFireAuth en LoginPage
+  ) {}
+
+  async ValidarDato() {
+    try {
+      await this.authService.login(this.email, this.password);
+      
+      // Suscribirse a cambios en la autenticación del usuario
+      this.afAuth.authState.subscribe(user => { // Utiliza authState en lugar de authStateChanges
+        if (user) {
+          const uid = user.uid;
+          
+          // Obtener los datos del usuario utilizando el uid
+          this.authService.getUserData(uid).then(userData => {
+            if (userData) {
+              const rol = userData['Rol'];
+              // Redireccionar según el rol del usuario
+              if (rol === 'usuario') {
+                this.navCtrl.navigateForward('/dashboard-usuario');
+              } else if (rol === 'administrador') {
+                this.navCtrl.navigateForward('/productos');
+              } else {
+                // Redireccionar a una página por defecto si el rol no está definido
+                this.navCtrl.navigateForward('/dashboard');
+              }
+            }
+          });
         }
-        console.error(errorMessage);
-        return throwError(errorMessage);
-      })
-    ).subscribe(
-      (res) => {
-        console.log(res);
-        const rol = res.rol;
-        if (rol === 'administrador') {
-          console.log('El usuario es un administrador.');
-          this.router.navigateByUrl('/productos');
-        } else if (rol === 'usuario') {
-          console.log('El usuario no es un administrador.');
-          this.router.navigateByUrl('/dashboard-usuario');
-        }
-      }
-    );
+      });
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      // Manejo de errores específicos
+    }
   }
   
-  sign() {
-    this.router.navigateByUrl('/sign');
+  async loginWithGoogle() {
+    try {
+      await this.authService.loginWithGoogle();
+      
+      // Redireccionar a la página adecuada después de iniciar sesión con Google
+      const user = await this.afAuth.currentUser; // Espera a que la promesa se resuelva
+      if (user) {
+        const userData = await this.authService.getUserData(user.uid);
+        if (userData) {
+          const rol = userData['Rol'];
+          if (rol === 'usuario') {
+            this.navCtrl.navigateForward('/dashboard-usuario');
+          } else if (rol === 'administrador') {
+            this.navCtrl.navigateForward('/productos');
+          } else {
+            this.navCtrl.navigateForward('/dashboard');
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión con Google:', error);
+    }
   }
-  home(){
-    this.router.navigateByUrl('/home');
+  
+
+  sign() {
+    this.navCtrl.navigateForward('/sign');
+  }
+
+  home() {
+    this.navCtrl.navigateBack('/home');
   }
 }

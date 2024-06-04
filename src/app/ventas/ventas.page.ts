@@ -10,9 +10,9 @@ import { AlertController } from '@ionic/angular';
 })
 export class VentasPage{
   ventas: any;
-  ip: string ='192.168.2.55';
+  ip: string ='192.168.2.56';
     constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private alertController: AlertController) {
-      this.ip='192.168.2.55';
+      this.ip='192.168.2.56';
       this.listaventas();
         }
 
@@ -20,7 +20,7 @@ export class VentasPage{
           this.listaventas();
         }
   listaventas() {
-    this.http.get('http://'+this.ip+'/Servicios/listaventas.php').subscribe(
+    this.http.get('http://'+this.ip+'/servicios/listaventas.php').subscribe(
       (res) => {
         console.log(res);
         this.ventas = res;
@@ -46,7 +46,7 @@ export class VentasPage{
         {
           text: 'Eliminar',
           handler: () => {
-            this.http.get('http://'+this.ip+'/Servicios/delventa.php?id_detalle=' + mat).subscribe(
+            this.http.get('http://'+this.ip+'/servicios/delventa.php?id_detalle=' + mat).subscribe(
               (res) => {
                 console.log(res);
                 this.listaventas();
