@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { NavController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth'; // Importa AngularFireAuth
-
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,8 +15,18 @@ export class LoginPage {
   constructor(
     private authService: AuthService,
     private navCtrl: NavController,
-    private afAuth: AngularFireAuth // Inyecta AngularFireAuth en LoginPage
+    private afAuth: AngularFireAuth,
+    private alertController: AlertController 
   ) {}
+
+  async presentAlert(){
+    const alert = await this.alertController.create({
+      header: 'Mensaje',
+      message: 'Usuario o contraseña incorrectos',
+      buttons: ['OK']
+
+    });
+  }
 
   async ValidarDato() {
     try {
@@ -46,7 +56,8 @@ export class LoginPage {
       });
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
-      // Manejo de errores específicos
+      this.presentAlert();
+      
     }
   }
   

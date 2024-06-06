@@ -4,7 +4,7 @@ export interface UserData {
     Id: string;
     Correo_E: string;
     Nombre: string;
-    Apellidos?: string; // Opcional si no siempre está presente
+    Apellidos?: string; 
     Rol: string;
     Telefono: string;
   }
