@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { auth, db } from '../firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'; // Importa signInWithPopup
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 'firebase/auth'; // Importa signInWithPopup
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { UserData } from '../models/user-data.model';
 
@@ -76,6 +76,29 @@ export class AuthService {
       }
     } catch (error) {
       console.error('Error logging in with Google:', error);
+      throw error;
+    }
+  }
+
+  async loginWithFacebook() {
+    try {
+      const provider = new FacebookAuthProvider();
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      if (user) {
+        const userDoc = await this.getUserData(user.uid);
+        if (!userDoc) {
+          await setDoc(doc(db, 'Usuarios', user.uid), {
+            Id: user.uid,
+            Correo_E: user.email,
+            Nombre: user.displayName || '',
+            Rol: "usuario",
+            Telefono: user.phoneNumber || ""
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Error logging in with Facebook:', error);
       throw error;
     }
   }

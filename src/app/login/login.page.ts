@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { NavController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth'; // Importa AngularFireAuth
 import { AlertController } from '@ionic/angular';
+import { FacebookAuthProvider } from 'firebase/auth';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -16,7 +17,9 @@ export class LoginPage {
     private authService: AuthService,
     private navCtrl: NavController,
     private afAuth: AngularFireAuth,
-    private alertController: AlertController 
+    private alertController: AlertController,
+   
+    
   ) {}
 
   async presentAlert(){
@@ -84,7 +87,27 @@ export class LoginPage {
       console.error('Error al iniciar sesión con Google:', error);
     }
   }
-  
+  async loginWithFacebook() {
+    try {
+      await this.authService.loginWithFacebook();
+      const user = await this.afAuth.currentUser;
+      if (user) {
+        const userData = await this.authService.getUserData(user.uid);
+        if (userData) {
+          const rol = userData.Rol;
+          if (rol === 'usuario') {
+            this.navCtrl.navigateForward('/dashboard-usuario');
+          } else if (rol === 'administrador') {
+            this.navCtrl.navigateForward('/productos');
+          } else {
+            this.navCtrl.navigateForward('/dashboard');
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión con Facebook:', error);
+    }
+  }
 
   sign() {
     this.navCtrl.navigateForward('/sign');
